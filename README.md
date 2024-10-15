@@ -3,14 +3,14 @@ Sales Revenue Prediction and Forecasting
 
 Experiments pertaining to the development of forecasting and predictive models for the purpose of analysing and projecting sales income for a retail organisation having locations in Wisconsin (WI), Texas (TX), and California (CA) are included in this repository. The models will be made available as production-ready APIs.
 
-**Project Overview**
+### Project Overview
 
 The project aims to:
 
 Create a prediction model to forecast sales income for a certain item in a particular retailer on a given date by utilising machine learning methods (XGBoost, Ridge).
 Create a forecasting model to project the total sales income for all retailers over the following seven days using time-series analysis methods (ARIMA, Prophet).
 
-**Repository Structure**
+### Repository Structure
 ------------
     
     ├── LICENSE              <- License file specifying the project’s licensing terms.
@@ -74,7 +74,7 @@ Create a forecasting model to project the total sales income for all retailers o
 
 --------
 
-**Installation**
+### Installation
 ------------
 
 1. Clone the repository:
@@ -88,19 +88,19 @@ Create a forecasting model to project the total sales income for all retailers o
 
 --------
 
-**Notebooks**
+### Notebooks
 ------------
 
 The main notebooks can be found in the /notebooks/ folder, structured as follows:
 
-Predictive Models:
+**Predictive Models:**
 
 Notebooks for Ridge and XGBoost models.
 1. Located in /notebooks/predictive/.
 2. Example: Hegde_Roy-24667610-predictive_ridgexgb.ipynb.
 --------
 
-Forecasting Models:
+**Forecasting Models:**
 ------------
 
 Notebooks for ARIMA and Prophet models.
@@ -108,7 +108,7 @@ Notebooks for ARIMA and Prophet models.
 2. Example: Hegde_Roy-24667610-forecasting_ARIMApipeline.ipynb.
 --------
 
-**Custom Modules**
+### Custom Modules
 ------------
 
 The custom modules used for data processing, feature engineering, and model training are stored in the /src/ directory. These include:
@@ -138,7 +138,7 @@ Model Functions (src/functions/)
 
 --------
 
-**Models**
+### Models
 ------------
 
 Trained models are stored in the /models/ folder:
@@ -148,10 +148,10 @@ Forecasting Models (/models/forecasting/): ARIMA and Prophet models.
 
 --------
 
-**Running the Code**
+### Running the Code
 ------------
 
-Run Jupyter Notebooks:
+**Run Jupyter Notebooks:**
 
     Use Jupyter Lab/Notebook to run the notebooks in /notebooks/ for training and evaluating the models.
 
@@ -160,7 +160,7 @@ Run Jupyter Notebooks:
     poetry shell
     jupyter notebook
 
-Loading the Trained Models:
+**Loading the Trained Models:**
 
     The order of the functions can be referred through /notebooks/ for both prediction and forecasting
 
@@ -169,7 +169,7 @@ Loading the Trained Models:
 --------
 
 
-**Contributors**
+### Contributors
 ------------
 
 Roy Hegde (roynyne@hotmail.com)
