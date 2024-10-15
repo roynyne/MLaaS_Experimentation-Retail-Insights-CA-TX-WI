@@ -46,8 +46,9 @@ Create a forecasting model to project the total sales income for all retailers o
     │
     ├── references           <- Data dictionaries, manuals, and other reference materials related to the project.
     │
-    ├── reports              <- Generated reports in docx
-    │   └── figures          <- Generated visualizations and figures used in reporting.
+    ├── reports              
+    │   └── figures          
+    │   └── 36120_AdvMLA_AT2_Roy_Hegde24667610.pdf          <- Final Report in pdf format.
     │
     ├── requirements.txt     <- The requirements file listing all dependencies for the project.
     │                         Used to recreate the project’s environment using `pip install -r requirements.txt`.
