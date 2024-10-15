@@ -75,6 +75,7 @@ Create a forecasting model to project the total sales income for all retailers o
 --------
 
 **Installation**
+------------
 
 1. Clone the repository:
 
@@ -85,7 +86,10 @@ Create a forecasting model to project the total sales income for all retailers o
 
     pip install -r requirements.txt
 
+--------
+
 **Notebooks**
+------------
 
 The main notebooks can be found in the /notebooks/ folder, structured as follows:
 
@@ -94,14 +98,18 @@ Predictive Models:
 Notebooks for Ridge and XGBoost models.
 1. Located in /notebooks/predictive/.
 2. Example: Hegde_Roy-24667610-predictive_ridgexgb.ipynb.
+--------
 
 Forecasting Models:
+------------
 
 Notebooks for ARIMA and Prophet models.
 1. Located in /notebooks/forecasting/.
 2. Example: Hegde_Roy-24667610-forecasting_ARIMApipeline.ipynb.
+--------
 
 **Custom Modules**
+------------
 
 The custom modules used for data processing, feature engineering, and model training are stored in the /src/ directory. These include:
 
@@ -128,14 +136,20 @@ Model Functions (src/functions/)
     │       ├── make_forecast.py
     │       └── train_prophet.py
 
+--------
+
 **Models**
+------------
 
 Trained models are stored in the /models/ folder:
 
 Predictive Models (/models/predictive/): XGBoost model artifact.
 Forecasting Models (/models/forecasting/): ARIMA and Prophet models.
 
+--------
+
 **Running the Code**
+------------
 
 Run Jupyter Notebooks:
 
@@ -152,9 +166,14 @@ Loading the Trained Models:
 
     The trained models are available in the /models/ folder and can be loaded directly using joblib or pickle.
     use "main_<models>" in the end to run as input for all functions.
+--------
+
 
 **Contributors**
+------------
 
 Roy Hegde (roynyne@hotmail.com)
+
+--------
 
 <p><small>Project based on the <a target="_blank" href="https://drivendata.github.io/cookiecutter-data-science/">cookiecutter data science project template</a>. #cookiecutterdatascience</small></p>
