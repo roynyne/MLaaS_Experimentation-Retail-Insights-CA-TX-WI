@@ -1,9 +1,15 @@
-README for GitHub Experimentation Repository
+Sales Revenue Prediction and Forecasting
 ==============================
 
-A short description of the project.
+Experiments pertaining to the development of forecasting and predictive models for the purpose of analysing and projecting sales income for a retail organisation having locations in Wisconsin (WI), Texas (TX), and California (CA) are included in this repository. The models will be made available as production-ready APIs.
 
-Project Organization
+**Project Overview**
+
+The project aims to:
+
+Create a prediction model to forecast sales income for a certain item in a particular retailer on a given date by utilising machine learning methods (XGBoost, Ridge).
+Create a forecasting model to project the total sales income for all retailers over the following seven days using time-series analysis methods (ARIMA, Prophet).
+
 ------------
 
     ├── LICENSE
