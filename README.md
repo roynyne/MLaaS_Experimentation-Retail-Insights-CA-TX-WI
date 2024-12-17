@@ -3,9 +3,9 @@
 
 Experiments pertaining to the development of forecasting and predictive models for the purpose of analysing and projecting sales income for a retail organisation having locations in Wisconsin (WI), Texas (TX), and California (CA) are included in this repository. The models will be made available as production-ready APIs.
 
-### Project Overview
+## Project Overview
 
-# 1. Executive Summary
+## 1. Executive Summary
 
 The goal of this project is to create machine learning models for a store that has locations in Wisconsin, Texas, and California. Predicting item-specific sales income at the shop level and projecting the overall sales for all stores over the following seven days were the objectives. The project's goal was to give the shop useful information for improving labour scheduling, marketing tactics, and inventory control.
 
@@ -18,9 +18,9 @@ Two models were developed:
 The shop was able to obtain real-time sales forecasts when both models were made available as Render APIs. With Streamlit on the front end and FastAPI on the back end, the deployment was made easier and the user experience was smooth. Because the models provide precise forecasts which are essential for labour allocation and inventory management—the company can save operating expenses. For the predictive test, XGBoost obtained a Root Mean Squared Error (RMSE) of 3.013 whereas ARIMA outperformed Prophet in terms of dependable performance for time-series forecasting.
 
 
-# 2. Business Understanding
+## 2. Business Understanding
 
-## a. Business Use Cases
+### a. Business Use Cases
 Keeping up with changing demand may be difficult for retail firms when it comes to personnel, marketing, and inventory management. This project's retailer, which has ten locations in three states, needs precise sales projections to handle the following:
 
 ○ Inventory control: While stockouts result in lost sales and disgruntled customers, overstocking can raise holding expenses. To effectively manage inventory, the store has to be able to forecast demand for certain goods.
@@ -29,7 +29,7 @@ Keeping up with changing demand may be difficult for retail firms when it comes 
 
 In order to assist managers make data-driven choices, the machine learning models created for this project provide forecasts that specifically meet these business demands. The shop can enhance promotional activities, effectively schedule workers, and optimise inventory levels using precise demand estimates.
 
-## b. Key Objectives
+### b. Key Objectives
 
 The project has three main objectives:
 ○ Create a Predictive Model: Based on past sales data, event information, and price, machine learning algorithms are used to anticipate sales income for certain goods at individual stores.
@@ -43,7 +43,7 @@ Stakeholders include:
 
 By addressing these key objectives, the project empowers the retailer to enhance its operational efficiency and improve decision-making processes.
 
-# 2. Data Understanding
+## 2. Data Understanding
 
 The study made use of many datasets from different sources, each of which provided crucial data for model training:
 
@@ -63,7 +63,7 @@ Figure 3.3 Calender Events Data
 Figure 3.4 Items Weekly Sales Data
 
 
-# 3. Data Preparation
+## 3. Data Preparation
 
 A number of crucial procedures were engaged in data preparation to guarantee that the datasets were appropriate for model training:
 
@@ -93,9 +93,9 @@ Figure 4.2 Encoded Event Name Values
 Figure 4.3 Encoded Event Type Values
 
 
-# 4. Modeling
+## 4. Modeling
 
-## a. Approach 1: Ridge Regression
+### a. Approach 1: Ridge Regression
 The baseline model for item-specific sales prediction was Ridge Regression, a linear model that supplements ordinary least squares with L2 regularisation. Ridge is especially helpful in situations when the data exhibits multicollinearity, or strongly linked properties. Due to its ability to penalise high coefficients and hence avoid overfitting, the regularisation is a viable contender for initial model selection.
 Why Ridge Regression?
 Ridge Regression is a great place to start for predictive modelling because of its simplicity, particularly in retail settings where the relationship between sales and characteristics (such item price, shop location, or promotions) might not seem to be linear at first.
@@ -106,7 +106,7 @@ The dataset underwent preprocessing to provide significant characteristics prior
 ○ Event Encoding: Event_name_encoded and Event_type_encoded are categorical characteristics that were label-encoded using holiday and event data, which is essential for retail           forecasting. The model was able to take into consideration surges during important sales occasions like Black Friday or Christmas thanks to this modification.
 ○ Store and Item Encoding: To give numeric values to category store and item IDs, store_id and item_id were both label-encoded. To capture trends unique to individual items in           stores, these aspects are crucial.
 
-## b. Approach 2: XGBoost
+### b. Approach 2: XGBoost
 The second strategy was XGBoost (Extreme Gradient Boosting), a potent and well-liked ensemble learning technique that excels at managing big datasets, feature interactions, and non-linear correlations. XGBoost's performance and versatility have made it a leading algorithm for structured/tabular data certain patterns.
 
 ○ Similar to Ridge Regression, XGBoost's performance was greatly enhanced via feature engineering:
@@ -117,10 +117,10 @@ The second strategy was XGBoost (Extreme Gradient Boosting), a potent and well-l
 
 Figure 5.b.1  XGB Model Parameters
 
-## c. Approach 3: ARIMA (Forecasting Model)
+### c. Approach 3: ARIMA (Forecasting Model)
 ARIMA (Auto-Regressive Integrated Moving Average) was chosen as the main model for time-series forecasting. The retailer's sales data included both seasonality and observable patterns, which make this approach especially useful.
 
-### Model Selection and Tuning
+#### Model Selection and Tuning
 
 Three critical parameters of the ARIMA model need to be carefully adjusted: p (number of lag observations), d (degree of differencing), and q (moving average window size). The model that performed the best after experimenting with several parameter combinations was ARIMA(5, 1, 0). These specifications showed shown in Figure 5.c.1:
 ○ p=5: The model predicts the subsequent value based on five prior observations.
@@ -130,16 +130,16 @@ Three critical parameters of the ARIMA model need to be carefully adjusted: p (n
 
 Figure 5.c.1  ARIMA Parameters
 
-## c. Approach 4: Prophet (Forecasting Model)
+### c. Approach 4: Prophet (Forecasting Model)
 From Figure 6.2, prophet's ability to manage complicated or erratic sales patterns brought on by holidays and promotions is one of its distinctive qualities. Users may enter particular holidays or events that could affect sales into Prophet, and the program modifies its forecast appropriately. In this project, Prophet was fed special event data, including Thanksgiving and other holidays, so it could account for the corresponding surges in sales.
 Though Prophet could identify these anomalous sales trends, its performance fell short of ARIMA in this particular instance. The retailer's sales data showed high weekly seasonality, which ARIMA handled more skilfully with simple differencing and autoregressive terms. This might be one explanation for the observed behaviour.
 
-# 6. Evaluation
+## 6. Evaluation
 
-## a. Evaluation Metrics
+### a. Evaluation Metrics
 The main assessment statistic for the forecasting and predicting models was RMSE, or root mean squared error. The average discrepancy between the expected and actual sales numbers is measured by RMSE. It was especially crucial in this situation since even little fluctuations in sales forecasts can have a big impact on the retailer's operations, resulting in things like excess inventory or understaffing.
 
-## b. Results and Analysis
+### b. Results and Analysis
 ○ Ridge Regression: This baseline model has an RMSE of 3.544.
 ○ XGBoost: With an RMSE of 3.013, this prediction model was chosen as the final one because of its excellent results.
 ○ ARIMA: Selected as the ultimate forecasting model due to its precise predictions and dependable national sales forecasting performance.
@@ -154,7 +154,7 @@ Figure 6.2 fbprophet Results
 Figure 6.3 ARIMA Results
 
 
-## c. Business Impact and Benefits
+### c. Business Impact and Benefits
 
 The models created have significant business value.
 ○ XGBoost: The merchant may more effectively manage inventory and steer clear of stock-related problems by precisely projecting sales for individual goods at certain shops. As a result, there are lower overstocking expenses and fewer stockouts that result in missed revenues.
@@ -162,7 +162,7 @@ The models created have significant business value.
 
 The models not only increase operational efficiency but also give the marketing team insightful information. The retailer may more efficiently arrange promotions and boost sales and customer happiness by pinpointing times of strong demand.
 
-## c. Data Privacy and Ethical Concerns
+### d. Data Privacy and Ethical Concerns
 Anonymised data was utilised in this project to guarantee that no private client information was revealed. The models' primary focus on sales patterns and outside events reduced the likelihood of data privacy violations. To guarantee that all shops and areas were treated equally in the projections, care was taken to prevent bias in the models, especially in the event forecasting aspects.
 
 ## 7. Deployment
@@ -174,7 +174,7 @@ Two essential elements had to be put up in order for the predictive and forecast
 
 To provide scalability and accessibility, both services were deployed on Render after being containerised using Docker. An outline of the deployment structure may be seen below, along with thorough descriptions of each part.
 
-### Backend Deployment with FastAPI
+#### Backend Deployment with FastAPI
 FastAPI, a cutting-edge, asynchronous web framework perfect for managing real-time forecasts and predictions, was used in the development of the backend API. There are two primary uses for the API:
 
 Forecast sales by item with the XGBoost model.
@@ -195,13 +195,13 @@ CORS (Cross-Origin Resource Sharing) was enabled in order to guarantee smooth co
 
 Figure 7.3 Bridging both ends with CORS
 
-### Docker for Backend
+#### Docker for Backend
 Docker was used to containerise the FastAPI backend, and the Dockerfile specified the environment and required libraries to operate the API. The backend may be readily installed on Render or other cloud services, and it is accessible via port 8000.
 
 
 Figure 7.4 FastAPI/Backend Docker File
 
-### Frontend Deployment with Streamlit
+#### Frontend Deployment with Streamlit
 
 Streamlit was used in the frontend's construction to provide an interactive user experience.
 
@@ -214,14 +214,13 @@ Figure 7.6 ("/sales/stores/items/") Results
 
 Figure 7.7 ("/sales/national/") Results
 
-### Docker for Frontend
+#### Docker for Frontend
 Docker is used to containerise and deploy the Streamlit frontend, much like it is for the backend. The frontend uses HTTP requests to establish direct communication with the FastAPI backend while operating on port 8501.
 
 
 Figure 7.8 Streamlit/Frontend Docker File
 
-### Simultaneous Deployment on Render
-
+#### Simultaneous Deployment on Render
 The frontend (Streamlit) and backend (FastAPI) were both deployed on Render, guaranteeing smooth communication between the two services. With the frontend acting as the user interface and the backend performing model inference, Render's free tier makes it simple to set up and host both services.
 
 Render Links:
@@ -232,7 +231,7 @@ Render Links:
 Figure 7.9 Render Web Services for Streamlit & FastAPI
 
 
-# 8. Conclusion
+## 8. Conclusion
 Through the development and implementation of machine learning models for sales forecasting and prediction, this project effectively met its goals. Because of its accuracy and performance, the XGBoost model was picked for item-store-date forecasts, whereas the ARIMA model was chosen for time-series forecasting across all stores. The store may make better decisions about labour allocation, marketing tactics, and inventory management with the help of these actionable data from both models.
 To further improve forecast accuracy, future studies may involve adding other factors, such as weather data. Maximising the advantages of these models might also include expanding the solution's reach to more locations and connecting it with the retailer's larger supply chain management system.
 
