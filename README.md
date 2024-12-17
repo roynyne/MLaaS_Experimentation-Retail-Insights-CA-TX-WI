@@ -1,58 +1,9 @@
-Sales Revenue Prediction and Forecasting
+# Sales Revenue Prediction and Forecasting
 ==============================
 
 Experiments pertaining to the development of forecasting and predictive models for the purpose of analysing and projecting sales income for a retail organisation having locations in Wisconsin (WI), Texas (TX), and California (CA) are included in this repository. The models will be made available as production-ready APIs.
 
 ### Project Overview
-
-The project aims to: ○ 
-
-Assignment 2
-
-ML as a Service: 
-Sales Revenue Prediction and Time-Series Forecasting for a Multi-State Retailer
-
-Roy Hegde
-Student ID: 24667610
-Github Username
-roynyne
-Github Repos
-Experiment Repository:
-https://github.com/roynyne/36120_AT2_experimentations 
-API Repository:
-https://github.com/roynyne/sales-api 
-URLs
-Backend: https://sales-api-backend-qw48.onrender.com 
-Frontend: https://sales-api-frontend.onrender.com 
-
-
-      
-       
-       36120 - Advanced Machine Learning Application
-Master of Data Science and Innovation
-University of Technology of Sydney
-Table of Contents
-
-1. Executive Summary	2
-2. Business Understanding	4
-a. Business Use Cases	4
-3. Data Understanding	6
-4. Data Preparation	7
-5. Modeling	8
-a. Approach 1: Ridge Regression	8
-b. Approach 2: XGBoost	9
-c. Approach 3: ARIMA (Forecasting Model)	9
-d. Approach 4: Prophet (Forecasting Model)	10
-6. Evaluation	11
-a. Evaluation Metrics	11
-b. Results and Analysis	11
-c. Business Impact and Benefits	13
-d. Data Privacy and Ethical Concerns	13
-7. Deployment	14
-Backend Deployment with FastAPI	14
-Frontend Deployment with Streamlit	16
-Simultaneous Deployment on Render	20
-8. Conclusion	21
 
 # 1. Executive Summary
 
