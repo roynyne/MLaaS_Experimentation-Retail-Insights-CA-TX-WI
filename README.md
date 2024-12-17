@@ -12,7 +12,9 @@ The goal of this project is to create machine learning models for a store that h
 Figure 1.1 Retail Store
 
 Two models were developed:
+
 ○ Predictive Model: Sales revenue for a certain item at a given store on a given day was predicted using XGBoost.
+
 ○ Forecasting Model: For the following seven days, total sales across all stores were predicted using the time-series forecasting algorithm ARIMA.
 
 The shop was able to obtain real-time sales forecasts when both models were made available as Render APIs. With Streamlit on the front end and FastAPI on the back end, the deployment was made easier and the user experience was smooth. Because the models provide precise forecasts which are essential for labour allocation and inventory management—the company can save operating expenses. For the predictive test, XGBoost obtained a Root Mean Squared Error (RMSE) of 3.013 whereas ARIMA outperformed Prophet in terms of dependable performance for time-series forecasting.
@@ -24,7 +26,9 @@ The shop was able to obtain real-time sales forecasts when both models were made
 Keeping up with changing demand may be difficult for retail firms when it comes to personnel, marketing, and inventory management. This project's retailer, which has ten locations in three states, needs precise sales projections to handle the following:
 
 ○ Inventory control: While stockouts result in lost sales and disgruntled customers, overstocking can raise holding expenses. To effectively manage inventory, the store has to be able to forecast demand for certain goods.
+
 ○ Labour Planning: Inaccurate estimates might result in stores having too few employees during busy times or too many employees during calm times, which would be inefficient use of labour.
+
 ○ Marketing and Promotions: Targeting promotions and running more efficient marketing campaigns are two ways to increase profitability when you know when and where demand will jump. to speak to:
 
 In order to assist managers make data-driven choices, the machine learning models created for this project provide forecasts that specifically meet these business demands. The shop can enhance promotional activities, effectively schedule workers, and optimise inventory levels using precise demand estimates.
@@ -32,13 +36,19 @@ In order to assist managers make data-driven choices, the machine learning model
 ### b. Key Objectives
 
 The project has three main objectives:
+
 ○ Create a Predictive Model: Based on past sales data, event information, and price, machine learning algorithms are used to anticipate sales income for certain goods at individual stores.
+
 ○ Create a Model for Forecasting: To anticipate the entire sales income for all retailers over the next seven days, use a time-series forecasting model. Allocating resources and strategic planning will be aided by this paradigm.
+
 ○ Models to be Deployed as APIs: In order to facilitate real-time engagement, both models will be implemented as APIs, enabling stakeholders to obtain forecasts whenever needed.
 
 Stakeholders include:
+
 ○ Store managers are in charge of making sure that personnel and inventory levels correspond to demand.
+
 ○ The operations team allocates resources throughout retailers and manages supply chain logistics using projections.
+
 ○ Marketing Department: Based on anticipated demand, forecasts are used to optimise promotional efforts and modify strategy.
 
 By addressing these key objectives, the project empowers the retailer to enhance its operational efficiency and improve decision-making processes.
@@ -48,8 +58,11 @@ By addressing these key objectives, the project empowers the retailer to enhance
 The study made use of many datasets from different sources, each of which provided crucial data for model training:
 
 ○ Sales Training Data: This dataset includes daily sales information for certain products sold in a number of different retailers. It serves as the main dataset for the prediction model and offers a detailed historical record of sales patterns. Each row includes the item ID, shop ID, and many identifiers such as department and category, and it also represents the daily sales of an item at a certain store.
+
 ○ Calendar Data: Weekends, holidays, and other noteworthy events that can have an impact on sales trends are among the crucial date-related details that are captured in the calendar data. Seasonality and trends, which are critical for time-series forecasting models like ARIMA and Prophet, may be found in this data.
+
 ○ Event Data: Promotions and vacations, for example, are known to have a big influence on customer behaviour. The event dataset contains details on a number of annual occasions, such Black Friday and Thanksgiving, that might have an impact on sales. The model may take these demand surges into account by integrating this data.
+
 ○ Weekly Sales Data for goods: This dataset compiles pricing and sales information for individual goods on a weekly basis, giving users a general idea of how prices change over time. Given the importance of price in consumer decision-making, this information is critical to the predictive and forecasting models.
 
 Every dataset has some restrictions. For instance, several item prices in the sales data were missing, and some holidays' event data was lacking. During the data preparation stage, these problems were resolved via preprocessing and data cleaning.
@@ -68,15 +81,21 @@ Figure 3.4 Items Weekly Sales Data
 A number of crucial procedures were engaged in data preparation to guarantee that the datasets were appropriate for model training:
 
 ○ Dataset Combination: 
+
     ○ Reshaping Sales Data: The melt function was used to convert the sales data from wide to long format. This made it possible to show the sales of each item on a given day for            each row.
+    
     ○ Merging Calendar Data: Using the day reference (d), the reshaped sales data was combined with calendar data to provide attributes relating to time and date.
+    
     ○ Incorporating Event Information: To account for the influence of promotions and holidays, calendar event data on the date column was combined to create special events.
+    
     ○ Adding Price Data: In order to account for price variations that effect sales, item prices were finally merged depending on wm_yr_wk, item_id, and store_id as well.
 
 ○ Data cleaning: Forward-filling techniques were used to fill in the missing data, particularly in the item price columns. The model was given complete training data by filling          up the missing variables using historical prices. To enable the algorithm to discern between genuine events and ordinary sales periods, entries without event data were                 labelled as "No Event."
 
 ○ Feature Engineering: In order to better capture the underlying patterns in the data, new features were produced from old ones via feature engineering, which was a crucial step in      the data preparation process:
+
     ○ Date Features: To help the model understand how time affects sales patterns, the "date" column was divided into many aspects, such as the day, month, and weekday.
+    
     ○ Label Encoding: Label encoding was applied to categorical variables, such as store_id, item_id, event_name, and event_type. This made it possible for machine learning                  algorithms to handle these category characteristics numerically, such as XGBoost and Ridge.
         
 ○ Managing Outliers and Missing Data: To maintain the integrity of the dataset, outliers in the sales data were retained, while forward-fill methods were utilised to fill in the         missing values in non-essential categories. Price data consistency was guaranteed by the forward-fill approach, and outliers offered vital information about atypical sales spikes—     a critical component for models attempting to understand the impact of uncommon occurrences.
@@ -103,15 +122,20 @@ Ridge Regression is a great place to start for predictive modelling because of i
 The dataset underwent preprocessing to provide significant characteristics prior to the fitting of the Ridge Regression model:
 
 ○ Date Features: Day, month, and weekday variables were created from the 'date' field. Retail sales are cyclical and seasonal, as seen by the fact that they usually rise on weekends     and fall in the middle of the week.
+
 ○ Event Encoding: Event_name_encoded and Event_type_encoded are categorical characteristics that were label-encoded using holiday and event data, which is essential for retail           forecasting. The model was able to take into consideration surges during important sales occasions like Black Friday or Christmas thanks to this modification.
+
 ○ Store and Item Encoding: To give numeric values to category store and item IDs, store_id and item_id were both label-encoded. To capture trends unique to individual items in           stores, these aspects are crucial.
 
 ### b. Approach 2: XGBoost
 The second strategy was XGBoost (Extreme Gradient Boosting), a potent and well-liked ensemble learning technique that excels at managing big datasets, feature interactions, and non-linear correlations. XGBoost's performance and versatility have made it a leading algorithm for structured/tabular data certain patterns.
 
-○ Similar to Ridge Regression, XGBoost's performance was greatly enhanced via feature engineering:
+Similar to Ridge Regression, XGBoost's performance was greatly enhanced via feature engineering:
+
 ○ Price Normalisation: To assist the model train more efficiently, the sell_price feature was normalised to standardise the range of prices across various goods.
+
 ○ Event Features: To capture the effect of holidays and special events on sales, two features were used: event_name_encoded and event_type_encoded. These characteristics enabled XGBoost to modify its forecasts according to the presence of promotions or the holiday season on a given day.
+
 ○ Date data: To better capture cyclical sales trends, XGBoost benefited from extra date data such as the week of the year and whether the day was a weekday or a weekend.
 
 
@@ -123,8 +147,11 @@ ARIMA (Auto-Regressive Integrated Moving Average) was chosen as the main model f
 #### Model Selection and Tuning
 
 Three critical parameters of the ARIMA model need to be carefully adjusted: p (number of lag observations), d (degree of differencing), and q (moving average window size). The model that performed the best after experimenting with several parameter combinations was ARIMA(5, 1, 0). These specifications showed shown in Figure 5.c.1:
+
 ○ p=5: The model predicts the subsequent value based on five prior observations.
+
 ○ d=1: To make the series stationary and account for trends over time, a single differencing was used.
+
 ○ q=0: Since the moving average window wasn't needed for the sales data, it wasn't applied in this instance.
 
 
@@ -140,8 +167,11 @@ Though Prophet could identify these anomalous sales trends, its performance fell
 The main assessment statistic for the forecasting and predicting models was RMSE, or root mean squared error. The average discrepancy between the expected and actual sales numbers is measured by RMSE. It was especially crucial in this situation since even little fluctuations in sales forecasts can have a big impact on the retailer's operations, resulting in things like excess inventory or understaffing.
 
 ### b. Results and Analysis
+
 ○ Ridge Regression: This baseline model has an RMSE of 3.544.
+
 ○ XGBoost: With an RMSE of 3.013, this prediction model was chosen as the final one because of its excellent results.
+
 ○ ARIMA: Selected as the ultimate forecasting model due to its precise predictions and dependable national sales forecasting performance.
 
 
@@ -157,7 +187,9 @@ Figure 6.3 ARIMA Results
 ### c. Business Impact and Benefits
 
 The models created have significant business value.
+
 ○ XGBoost: The merchant may more effectively manage inventory and steer clear of stock-related problems by precisely projecting sales for individual goods at certain shops. As a result, there are lower overstocking expenses and fewer stockouts that result in missed revenues.
+
 ○ ARIMA: The store can best allocate labour and manage resources by using the national sales prediction. The retailer can staff stores adequately and make sure supply chain operations are in line with predicted demand by having knowledge of future sales patterns.
 
 The models not only increase operational efficiency but also give the marketing team insightful information. The retailer may more efficiently arrange promotions and boost sales and customer happiness by pinpointing times of strong demand.
@@ -170,6 +202,7 @@ Anonymised data was utilised in this project to guarantee that no private client
 Two essential elements had to be put up in order for the predictive and forecasting models to be deployed:
 
 ○ FastAPI Backend: For managing forecast and prediction queries.
+
 ○ Streamlit Frontend: To offer an interactive user interface for accessing the models. 
 
 To provide scalability and accessibility, both services were deployed on Render after being containerised using Docker. An outline of the deployment structure may be seen below, along with thorough descriptions of each part.
@@ -181,9 +214,13 @@ Forecast sales by item with the XGBoost model.
 Using the ARIMA model, provide a seven-day national sales estimate.
 
 The main.py file defines the API endpoints:
+
 ○ Root Endpoint: Shows instructions on how to use the API and a welcome message.
+
 ○ Healthcheck Endpoint: Attests to the models operational readiness.
+
 ○ Prediction endpoint (/sales/stores/items/): Returns sales projections based on store ID, item ID, date, price, and event information at the.
+
 ○ Forecasting Endpoint (/sales/national/): Based on the commencement date, offers a seven-day projection for national sales.
 
 
@@ -224,7 +261,9 @@ Figure 7.8 Streamlit/Frontend Docker File
 The frontend (Streamlit) and backend (FastAPI) were both deployed on Render, guaranteeing smooth communication between the two services. With the frontend acting as the user interface and the backend performing model inference, Render's free tier makes it simple to set up and host both services.
 
 Render Links:
+
 ○ Backend API: https://sales-api-backend-qw48.onrender.com 
+
 ○ Frontend App: https://sales-api-frontend.onrender.com
 
 
