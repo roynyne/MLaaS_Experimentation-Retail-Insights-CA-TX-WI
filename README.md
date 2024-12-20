@@ -9,6 +9,7 @@ Experiments pertaining to the development of forecasting and predictive models f
 
 The goal of this project is to create machine learning models for a store that has locations in Wisconsin, Texas, and California. Predicting item-specific sales income at the shop level and projecting the overall sales for all stores over the following seven days were the objectives. The project's goal was to give the shop useful information for improving labour scheduling, marketing tactics, and inventory control.
 
+
 Figure 1.1 Retail Store
 
 Two models were developed:
